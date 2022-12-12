@@ -41,7 +41,7 @@ if(!isset($user_id)){
    <div class="flex">
 
       <div class="image">
-         <img src="images/about-img.jpg" alt="">
+         <img src="images/aboutus.jpg" alt="">
       </div>
 
       <div class="content">
@@ -71,7 +71,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Peter Mc Gregor </h3>
       </div>
 
       <div class="box">
@@ -84,7 +84,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Sarah Jones</h3>
       </div>
 
       <div class="box">
@@ -97,7 +97,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Jonny Dean </h3>
       </div>
 
       <div class="box">
@@ -110,7 +110,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Julia Anderson</h3>
       </div>
 
       <div class="box">
@@ -123,7 +123,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Eric Harwards</h3>
       </div>
 
       <div class="box">
@@ -136,7 +136,7 @@ if(!isset($user_id)){
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
          </div>
-         <h3>john deo</h3>
+         <h3>Nina Sommer</h3>
       </div>
 
    </div>
@@ -145,7 +145,7 @@ if(!isset($user_id)){
 
 <section class="authors">
 
-   <h1 class="title">greate authors</h1>
+   <h1 class="title">Create Authors</h1>
 
    <div class="box-container">
 
@@ -157,7 +157,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>Richard Gate</h3>
       </div>
 
       <div class="box">
@@ -168,7 +168,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>Sarah Jones</h3>
       </div>
 
       <div class="box">
@@ -179,7 +179,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>Thomas Müller</h3>
       </div>
 
       <div class="box">
@@ -190,7 +190,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>Antonia Miller</h3>
       </div>
 
       <div class="box">
@@ -201,7 +201,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>John Dow </h3>
       </div>
 
       <div class="box">
@@ -212,7 +212,7 @@ if(!isset($user_id)){
             <a href="#" class="fab fa-instagram"></a>
             <a href="#" class="fab fa-linkedin"></a>
          </div>
-         <h3>john deo</h3>
+         <h3>Andrea Mc Kartney</h3>
       </div>
 
    </div>

@@ -140,7 +140,7 @@ section{
    align-items: center;
    justify-content: center;
    gap:1rem;
-   background: url(../images/heading-bg.webp) no-repeat;
+   background: url(../images/WINTER-Banner-Front.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    text-align: center;
@@ -345,7 +345,7 @@ section{
 
 .home{
    min-height: 70vh;
-   background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../images/home-bg.jpg) no-repeat;
+   background:linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url(../images/WINTER-Banner-Front.jpg) no-repeat;
    background-size: cover;
    background-position: center;
    display: flex;
@@ -358,7 +358,7 @@ section{
    width: 60rem;
 }
 
-.home .content h3{
+.home .content h3{ 
    font-size: 5.5rem;
    color:var(--white);
    text-transform: uppercase;
