@@ -74,6 +74,8 @@ if(isset($_POST['add_to_cart'])){
       <input type="hidden" name="product_price" value="<?php echo $fetch_products['price']; ?>">
       <input type="hidden" name="product_image" value="<?php echo $fetch_products['image']; ?>">
       <input type="submit" value="add to cart" name="add_to_cart" class="btn">
+      <a class='text-decoration-none' href='details.php?id=<?php echo $fetch_products['id']; ?>'><button class='btn btn-info btn-sm' type='button'> Show Details</button></a>
+     
      </form>
       <?php
          }

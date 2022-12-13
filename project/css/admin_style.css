@@ -364,6 +364,7 @@ section{
    text-align: center;
    border-radius: .5rem;
    background-color: var(--white);
+   height: 300px;
 }
 
 .edit-product-form form img{

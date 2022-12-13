@@ -49,11 +49,14 @@ if (isset($message)) {
          </div>
 
          <div class="user-box">
+         <img style="height: 50px;width:50px;" src="./uploaded_img/<?php echo $_SESSION['user_image']; ?>" alt="afdfadsf">
             <p>username : <span><?php echo $_SESSION['user_name']; ?></span></p>
             <p>email : <span><?php echo $_SESSION['user_email']; ?></span></p>
+            <a class='text-decoration-none' href='user_update.php?id=<?php echo $_SESSION['user_id']; ?>'><button class='btn btn-info btn-sm' type='button'> Update</button></a>
             <a href="logout.php" class="delete-btn">Logout</a>
          </div>
       </div>
    </div>
 
 </header>
+
