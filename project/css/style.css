@@ -390,10 +390,13 @@ section{
    text-align: center;
    border:var(--border);
    position: relative;
+   
 }
 
 .products .box-container .box .image{
    height: 30rem;
+   width: 25rem;
+   
 }
 
 .products .box-container .box .name{
