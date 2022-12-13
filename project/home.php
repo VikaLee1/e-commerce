@@ -54,8 +54,8 @@ if (isset($_POST['add_to_cart'])) {
 
       <div class="content">
          <h3>All about Ski's and Snowboard's</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quod? Reiciendis ut porro iste totam.</p>
-         <a href="about.php" class="white-btn">discover more</a>
+         <p>When the temperature drops, and lakes and ponds freeze over, and snow begins to fall, for many outdoor sports enthusiasts it means it’s time to head indoors and prepare for next season. But that’s when winter sports fanatics come alive. We know how much you love to get out in the snow and on the ice, and the equipment we’ve gathered here will make all your winter sports activities amazing. Whether your thing is slaloming down a mountain on skis, catching air with your snowboard, sledding or tubing down a hill, exploring a backcountry trail on snowshoes, or gliding along the frozen surface of an ice rink, we’ve got the gear.</p>
+         <a href="about.php" class="white-btn">Discover more</a>
       </div>
 
    </section>
@@ -105,7 +105,8 @@ if (isset($_POST['add_to_cart'])) {
 
          <div class="content">
             <h3>About Us</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit quos enim minima ipsa dicta officia corporis ratione saepe sed adipisci?</p>
+            <p>Skis, Board, Boots: one-stop shop!
+               Race models, speedy carving skis, all-round skis, skis for children and teens.Come to one of our shops and take a closer look at our varied ski models, snowboards and boots which fulfill all safety and comfort standards. Especially if you are looking for ski boots you should trust in experts: try our highly professional ski boot fitting system for splendid ski and snowboard adventures in the snow, right amidst the scenic Ötztal mountains. Accessories, skiing goggles and ski helmets complete the perfect ski equipment of SunUp Sports!</p>
             <a href="about.php" class="btn">Read More</a>
          </div>
 
@@ -117,7 +118,7 @@ if (isset($_POST['add_to_cart'])) {
 
       <div class="content">
          <h3>Have any questions?</h3>
-         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque cumque exercitationem repellendus, amet ullam voluptatibus?</p>
+         <p>If you have and question of need some information about our products or about our company feel free to contact us.</p>
          <a href="contact.php" class="white-btn">contact us</a>
       </div>
 
