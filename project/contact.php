@@ -54,7 +54,7 @@ if(isset($_POST['send'])){
    <p> <a href="home.php">Home</a> / Contact </p>
 </div>
 
-<section class="contact">
+<section style="display: flex;" class="contact">
 
    <form action="" method="post">
       <h3>say something!</h3>
@@ -64,7 +64,12 @@ if(isset($_POST['send'])){
       <textarea name="message" class="box" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
       <input type="submit" value="send message" name="send" class="btn">
    </form>
-
+   <iframe style="width: 60rem; margin-right:10rem"
+          
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15076.89592087332!2d72.8319697277345!3d19.14167056419224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63aceef0c69%3A0x2aa80cf2287dfa3b!2sJogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400047!5e0!3m2!1sen!2sin!4v1636210664473!5m2!1sen!2sin"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
 </section>
 
 

@@ -124,23 +124,23 @@ if(isset($_POST['order_btn'])){
          </div>
          <div class="inputBox">
             <span>address line 01 :</span>
-            <input type="number" min="0" name="flat" required placeholder="e.g. flat no.">
+            <input type="number" min="0" name="flat" required placeholder="Flat no.">
          </div>
          <div class="inputBox">
             <span>address line 01 :</span>
-            <input type="text" name="street" required placeholder="e.g. street name">
+            <input type="text" name="street" required placeholder="Street name">
          </div>
          <div class="inputBox">
             <span>city :</span>
-            <input type="text" name="city" required placeholder="e.g. mumbai">
+            <input type="text" name="city" required placeholder="City">
          </div>
          <div class="inputBox">
             <span>state :</span>
-            <input type="text" name="state" required placeholder="e.g. maharashtra">
+            <input type="text" name="state" required placeholder="State">
          </div>
          <div class="inputBox">
             <span>country :</span>
-            <input type="text" name="country" required placeholder="e.g. india">
+            <input type="text" name="country" required placeholder="Country">
          </div>
          <div class="inputBox">
             <span>pin code :</span>
