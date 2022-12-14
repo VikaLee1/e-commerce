@@ -1,14 +1,14 @@
 <?php
 
-include 'config.php';
+require_once 'config.php';
 
-session_start();
 
-$user_id = $_SESSION['user_id'];
 
-if (!isset($user_id)) {
-   header('location:login.php');
-}
+
+
+// if (!isset($user_id)) {
+//    header('location:login.php');
+// }
 
 ?>
 
@@ -31,6 +31,12 @@ if (!isset($user_id)) {
 
 <body>
 
+
+
+
+<a href="review/createReview.php" class="btn">Add Review</a>
+
+  
    <?php include 'header.php'; ?>
 
    <div class="heading">
@@ -61,6 +67,29 @@ if (!isset($user_id)) {
    <section class="reviews">
 
       <h1 class="title">Client's reviews</h1>
+
+   <div class="box-container">
+ <?php
+      $select_reviews = mysqli_query($conn, "SELECT * FROM `reviews`") or die('query failed');
+      if(mysqli_num_rows($select_reviews) > 0){
+         while($fetch_reviews = mysqli_fetch_assoc($select_reviews)){
+   ?>
+      <div class="box">
+         <img src="images/pic-1.png" alt="">
+         <p><?php echo $fetch_reviews['name']; ?></p>
+         <p><?php echo $fetch_reviews['review']; ?></p>
+        
+         <h3><?php echo $fetch_reviews['name']; ?></h3>
+      </div>
+<?php
+      }
+   }else{
+      echo '<p class="empty">no review added yet!</p>';
+   }
+   ?>
+
+      <section class="show-reviews">
+
 
       <div class="box-container">
 
@@ -145,6 +174,11 @@ if (!isset($user_id)) {
       </div>
 
    </section>
+
+   
+
+   
+
 
    <section class="authors">
 

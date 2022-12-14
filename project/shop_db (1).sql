@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 13, 2022 at 03:33 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Host: localhost
+-- Generation Time: Dec 14, 2022 at 10:15 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `cart` (
   `price` int(100) NOT NULL,
   `quantity` int(100) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
@@ -58,7 +58,7 @@ CREATE TABLE `message` (
   `email` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
   `message` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -78,7 +78,7 @@ CREATE TABLE `orders` (
   `total_price` int(100) NOT NULL,
   `placed_on` varchar(50) NOT NULL,
   `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ CREATE TABLE `products` (
   `size` varchar(55) DEFAULT NULL,
   `price` int(100) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
@@ -126,6 +126,19 @@ INSERT INTO `products` (`id`, `name`, `brand`, `description`, `color`, `size`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `review` tinytext DEFAULT NULL,
+  `fk_user_id` int(11) DEFAULT NULL,
+  `fk_product_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -140,17 +153,22 @@ CREATE TABLE `users` (
   `ban` enum('yes','no') DEFAULT NULL,
   `ban_start` date DEFAULT NULL,
   `ban_end` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `lname`, `email`, `password`, `image`, `user_type`, `ban`, `ban_start`, `ban_end`) VALUES
-(1, 'misa', 'miskovic', 'misa@gmail.com', 'a646e457db47ad218d6d9d3ce325878b', 'mamba.jpg', 'user', NULL, NULL, NULL),
+(1, 'misa', 'miskovic', 'misa@gmail.com', 'a646e457db47ad218d6d9d3ce325878b', 'mamba.jpg', 'user', 'yes', '2022-12-14', '2022-12-15'),
+(5, 'Rocky', 'docky', 'admin@mail.com', '202cb962ac59075b964b07152d234b70', NULL, 'admin', NULL, '0000-00-00', '0000-00-00'),
+(6, 'user2', 'User2', 'user2@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'admin', 'no', '2022-12-13', '0000-00-00'),
+(7, 'user3', 'User3', 'user@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', 'no', NULL, NULL),
+(8, 'user4', 'User4', 'user4@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', 'yes', '2022-12-13', '2022-12-14'),
 (10, 'misa', 'miskovic', 'misa@gmail.com', 'e517097802ff7ba0bbbfefb1bc13c3a9', 'mamba.jpg', 'user', NULL, NULL, NULL),
 (13, 'nikola5', 'sijan1', 'nikola@gmail.com', 'a646e457db47ad218d6d9d3ce325878b', 'ARV.jpg', 'user', NULL, NULL, NULL),
-(16, 'lea', 'sijan', 'lea@gmail.com', 'd9b9768a129ccf45eba4ad5762f24da4', '', 'admin', NULL, NULL, NULL);
+(16, 'lea', 'sijan', 'lea@gmail.com', 'd9b9768a129ccf45eba4ad5762f24da4', '', 'admin', NULL, NULL, NULL),
+(17, 'serri', 'trainer', 'serri@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -182,6 +200,13 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD KEY `fk_user_id` (`fk_user_id`),
+  ADD KEY `fk_product_id` (`fk_product_id`);
 
 --
 -- Indexes for table `users`
@@ -221,7 +246,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -244,6 +269,13 @@ ALTER TABLE `message`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`fk_user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`fk_product_id`) REFERENCES `orders` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
