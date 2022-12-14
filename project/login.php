@@ -40,6 +40,7 @@ $now=new \DateTime();
          $_SESSION['user_name'] = $row['name'];
          $_SESSION['user_lname'] = $row['lname'];
          $_SESSION['user_email'] = $row['email'];
+         $_SESSION['user_image'] = $row['image'];
          $_SESSION['user_id'] = $row['id'];
          header('location:home.php'); 
          } elseif($row['ban'] == 'yes'){

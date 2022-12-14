@@ -18,13 +18,17 @@ if(isset($_POST['add_product'])){
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
    $image_folder = 'uploaded_img/'.$image;
+   $brand = $_POST['brand'];
+   $description = $_POST['description'];
+   $color = $_POST['color'];
+   $size = $_POST['size'];
 
    $select_product_name = mysqli_query($conn, "SELECT name FROM `products` WHERE name = '$name'") or die('query failed');
 
    if(mysqli_num_rows($select_product_name) > 0){
       $message[] = 'product name already added';
    }else{
-      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name, price, image) VALUES('$name', '$price', '$image')") or die('query failed');
+      $add_product_query = mysqli_query($conn, "INSERT INTO `products`(name,brand,description,color,size, price, image) VALUES('$name','$brand','$description','$color','$size', '$price', '$image')") or die('query failed');
 
       if($add_product_query){
          if($image_size > 2000000){
@@ -53,8 +57,12 @@ if(isset($_POST['update_product'])){
    $update_p_id = $_POST['update_p_id'];
    $update_name = $_POST['update_name'];
    $update_price = $_POST['update_price'];
+   $update_brand = $_POST['update_brand'];
+   $update_description = $_POST['update_description'];
+   $update_color = $_POST['update_color'];
+   $update_size = $_POST['update_size'];
 
-   mysqli_query($conn, "UPDATE `products` SET name = '$update_name', price = '$update_price' WHERE id = '$update_p_id'") or die('query failed');
+   mysqli_query($conn, "UPDATE `products` SET name = '$update_name',brand='$update_brand',description='$update_description',color='$update_color',size='$update_size', price = $update_price WHERE id = '$update_p_id'") or die('query failed');
 
    $update_image = $_FILES['update_image']['name'];
    $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
@@ -106,6 +114,10 @@ if(isset($_POST['update_product'])){
    <form action="" method="post" enctype="multipart/form-data">
       <h3>add product</h3>
       <input type="text" name="name" class="box" placeholder="enter product name" required>
+      <input type="text" name="brand" class="box" placeholder="enter product brand" required>
+      <input type="text" name="description" class="box" placeholder="enter product description" required>
+      <input type="text" name="color" class="box" placeholder="enter product color" required>
+      <input type="text" name="size" class="box" placeholder="enter product size" required>
       <input type="number" min="0" name="price" class="box" placeholder="enter product price" required>
       <input type="file" name="image" accept="image/jpg, image/jpeg, image/png" class="box" required>
       <input type="submit" value="add product" name="add_product" class="btn">
@@ -143,7 +155,7 @@ if(isset($_POST['update_product'])){
 
 </section>
 
-<section class="edit-product-form">
+<section class="edit-product-form" style="height:300px ;">
 
    <?php
       if(isset($_GET['update'])){
@@ -157,6 +169,10 @@ if(isset($_POST['update_product'])){
       <input type="hidden" name="update_old_image" value="<?php echo $fetch_update['image']; ?>">
       <img src="uploaded_img/<?php echo $fetch_update['image']; ?>" alt="">
       <input type="text" name="update_name" value="<?php echo $fetch_update['name']; ?>" class="box" required placeholder="enter product name">
+      <input type="text" name="update_brand" value="<?php echo $fetch_update['brand']; ?>" class="box" required placeholder="enter product brand">
+      <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box" required placeholder="enter product description">
+      <input type="text" name="update_color" value="<?php echo $fetch_update['color']; ?>" class="box" required placeholder="enter product color">
+      <input type="text" name="update_size" value="<?php echo $fetch_update['size']; ?>" class="box" required placeholder="enter product size">
       <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box" required placeholder="enter product price">
       <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
       <input type="submit" value="update" name="update_product" class="btn">
