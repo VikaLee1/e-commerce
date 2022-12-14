@@ -1,4 +1,6 @@
 <?php
+
+
 if (isset($message)) {
    foreach ($message as $message) {
       echo '
@@ -9,6 +11,8 @@ if (isset($message)) {
       ';
    }
 }
+
+// $user_id = $_SESSION['user_id'];
 ?>
 
 <header class="header">

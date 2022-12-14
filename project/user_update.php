@@ -83,7 +83,7 @@ if(isset($_POST['update_user'])){
       <input type="hidden" name="update_u_id" value="<?php echo $row['id']; ?>">
       <input type="hidden" name="update_old_image" value="<?php echo $row['image']; ?>">
       <div style="width: 100%;">
-      <img src="uploaded_img/<?php echo $row['image']; ?>" alt="">
+      <img style="" src="uploaded_img/<?php echo $row['image']; ?>" alt="">
       </div>
       <div>
       <input type="text" value="<?php echo $row['name']; ?>" name="update_name" placeholder="enter your name" required class="box">
