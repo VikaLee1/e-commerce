@@ -150,15 +150,19 @@ section{
    font-size: 5rem;
    color:var(--black);
    text-transform: uppercase;
+   text-shadow: 2px 2px 2px white;
 }
 
 .heading p{
    font-size: 2.5rem;
-   color:var(--light-color);
+   color:rgb(66, 65, 65);
+   text-shadow: 2px 2px 2px white;
+
 }
 
 .heading p a{
-   color:var(--purple);
+   color:#682684;
+   text-shadow: 2px 2px 2px white;
 }
 
 .heading p a:hover{
