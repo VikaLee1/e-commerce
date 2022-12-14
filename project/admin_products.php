@@ -155,7 +155,7 @@ if(isset($_POST['update_product'])){
 
 </section>
 
-<section class="edit-product-form" style="height:300px ;">
+<section class="edit-product-form" style="">
 
    <?php
       if(isset($_GET['update'])){
@@ -173,7 +173,7 @@ if(isset($_POST['update_product'])){
       <input type="text" name="update_description" value="<?php echo $fetch_update['description']; ?>" class="box" required placeholder="enter product description">
       <input type="text" name="update_color" value="<?php echo $fetch_update['color']; ?>" class="box" required placeholder="enter product color">
       <input type="text" name="update_size" value="<?php echo $fetch_update['size']; ?>" class="box" required placeholder="enter product size">
-      <input type="number" name="update_price" value="<?php echo $fetch_update['price']; ?>" min="0" class="box" required placeholder="enter product price">
+      <input type="number" name="update_price" value="<?php echo $fetch_update['price'];?>" min="0" class="box" required placeholder="enter product price">
       <input type="file" class="box" name="update_image" accept="image/jpg, image/jpeg, image/png">
       <input type="submit" value="update" name="update_product" class="btn">
       <input type="reset" value="cancel" id="close-update" class="option-btn">
