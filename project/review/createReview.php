@@ -1,10 +1,20 @@
 <?php
 
-include 'config.php';
+require_once '../config.php';
+
+
+// if (!isset($_SESSION['admin']) && !isset($_SESSION['user'])) {
+//     header("Location: ../../admin_users.php");
+//     exit;
+// }
+// if (isset($_SESSION['user'])) {
+//     header("Location: ../../home.php");
+//     exit;
+// }
 
 if(isset($_POST['submit'])){
 
-   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $review = mysqli_real_escape_string($conn, $_POST['review']);
    $lname = mysqli_real_escape_string($conn, $_POST['lname']);
    $email = mysqli_real_escape_string($conn, $_POST['email']);
    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
@@ -20,11 +30,12 @@ if(isset($_POST['submit'])){
          $message[] = 'confirm password not matched!';
       }else{
          mysqli_query($conn, "INSERT INTO `users`(name, lname, email, password, user_type) VALUES('$name','$lname', '$email', '$cpass', '$user_type')") or die('query failed');
-         $message[] = 'registered successfully!';
-         header('location:login.php');
-      }
+        //  $message[] = 'registered successfully!';
+        //  header('../admin_users.php');
+      }  
+      header('../admin_users.php');
    }
-
+ 
 }
 
 ?>
@@ -35,13 +46,13 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
+   <title>Create Review</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
 </head>
 <body>
@@ -64,21 +75,29 @@ if(isset($message)){
 <div class="form-container">
 
    <form action="" method="post">
-      <h3>register now</h3>
-      <input type="text" name="name" placeholder="enter your first name" required class="box">
-      <input type="text" name="lname" placeholder="enter your last name" required class="box">
-      <input type="email" name="email" placeholder="enter your email" required class="box">
-      <input type="password" name="password" placeholder="enter your password" required class="box">
-      <input type="password" name="cpassword" placeholder="confirm your password" required class="box">
+      <h3>Add a review</h3>
+
+      <input type="text" name="name" placeholder="enter your name" required class="box">
+     
+      
       <select name="user_type" class="box">
          <option value="user">user</option>
          <option value="admin">admin</option>
       </select>
-      <input type="submit" name="submit" value="register now" class="btn">
-      <p>already have an account? <a href="login.php">login now</a></p>
+
+     
+
+      <textarea  cols="55" rows="10" style="border:solid 1px grey;"placeholder="leave your review" ></textarea>
+
+
+      
+      <input type="submit" name="submit" value="create a review" class="btn">
+
    </form>
 
 </div>
 
 </body>
 </html>
+
+
