@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../config.php';
 
 
@@ -12,31 +12,47 @@ require_once '../config.php';
 //     exit;
 // }
 
+// $sql1 = mysqli_query($conn, "SELECT * 
+// FROM `users` 
+// JOIN `reviews` ON reviews.fk_user_id=users.id
+// JOIN `orders` ON orders.id=reviews.fk_product_id
+
+// ");
+// $result = mysqli_query($conn, $sql1);
+// $tbody='';
+
+// if(mysqli_num_rows($sql1) > 0){
+//    while($row = mysqli_fetch_assoc($result)){
+//       $tbody .="
+//       <p>".$row['name']."</p>
+//       ";
+//       echo $tbody;
+//    } 
+// } 
+
+
 if(isset($_POST['submit'])){
+  
+   $id=$_SESSION['user_id'];
+   $review=$_POST['review'];
 
-   $review = mysqli_real_escape_string($conn, $_POST['review']);
-   $lname = mysqli_real_escape_string($conn, $_POST['lname']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
-   $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
-   $user_type = $_POST['user_type'];
+   $sql = "SELECT * FROM orders WHERE `user_id`=$id";
+   $result = mysqli_query($conn, $sql);
+   $row = mysqli_fetch_assoc($result);
+   $orderid = $row["id"];
+   // $fk_user_id=$_SESSION['fk_user_id'];
+   // $fk_product_id=$_SESSION['fk_product_id'];
 
-   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+  
 
-   if(mysqli_num_rows($select_users) > 0){
-      $message[] = 'user already exist!';
-   }else{
-      if($pass != $cpass){
-         $message[] = 'confirm password not matched!';
-      }else{
-         mysqli_query($conn, "INSERT INTO `users`(name, lname, email, password, user_type) VALUES('$name','$lname', '$email', '$cpass', '$user_type')") or die('query failed');
-        //  $message[] = 'registered successfully!';
-        //  header('../admin_users.php');
+       mysqli_query($conn, "INSERT INTO `reviews`(review, fk_user_id, fk_product_id) VALUES('$review',$id, $orderid)") or die('query failed');
+         header('location:../about.php');
       }  
-      header('../admin_users.php');
-   }
- 
-}
+     
+   
+
+   mysqli_close($conn);
+
 
 ?>
 
@@ -59,39 +75,22 @@ if(isset($_POST['submit'])){
 
 
 
-<?php
-if(isset($message)){
-   foreach($message as $message){
-      echo '
-      <div class="message">
-         <span>'.$message.'</span>
-         <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-      </div>
-      ';
-   }
-}
-?>
+
    
 <div class="form-container">
 
    <form action="" method="post">
       <h3>Add a review</h3>
-
-      <input type="text" name="name" placeholder="enter your name" required class="box">
      
-      
-      <select name="user_type" class="box">
-         <option value="user">user</option>
-         <option value="admin">admin</option>
-      </select>
+     
 
      
 
-      <textarea  cols="55" rows="10" style="border:solid 1px grey;"placeholder="leave your review" ></textarea>
+      <textarea  cols="55" rows="10" style="border:solid 1px grey;"placeholder="leave your review" name="review"></textarea>
 
 
       
-      <input type="submit" name="submit" value="create a review" class="btn">
+      <input type="submit" name="submit" id="submit" value="create a review" class="btn">
 
    </form>
 

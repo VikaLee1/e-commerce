@@ -31,12 +31,6 @@ $user_id = $_SESSION['user_id'];
 </head>
 
 <body>
-
-
-
-
-<a href="review/createReview.php" class="btn">Add Review</a>
-
   
    <?php include 'header.php'; ?>
 
@@ -65,22 +59,34 @@ $user_id = $_SESSION['user_id'];
 
    </section>
 
+
+
+
    <section class="reviews">
 
       <h1 class="title">Client's reviews</h1>
+     <center><a href="review/createReview.php" class="btn">Add Review</a>
+</center>
 
    <div class="box-container">
  <?php
-      $select_reviews = mysqli_query($conn, "SELECT * FROM `reviews`") or die('query failed');
-      if(mysqli_num_rows($select_reviews) > 0){
-         while($fetch_reviews = mysqli_fetch_assoc($select_reviews)){
+      // $select_reviews = mysqli_query($conn, "SELECT * FROM `reviews`") or die('query failed');
+      $id=$_SESSION['user_id'];
+      $sql=mysqli_query($conn, "SELECT * 
+      FROM `users` 
+      JOIN `reviews` ON reviews.fk_user_id=users.id
+      JOIN `orders` ON orders.id=reviews.fk_product_id" );
+      if(mysqli_num_rows($sql) > 0){
+         while($fetch_reviews = mysqli_fetch_assoc($sql)){
+            // var_dump($fetch_reviews);
    ?>
       <div class="box">
-         <img src="images/pic-1.png" alt="">
+         <img src="uploaded_img/<?php echo $fetch_reviews['image']; ?>" alt="">
          <p><?php echo $fetch_reviews['name']; ?></p>
          <p><?php echo $fetch_reviews['review']; ?></p>
+         <p>Products ordered:<?php echo $fetch_reviews['total_products']; ?></p>
         
-         <h3><?php echo $fetch_reviews['name']; ?></h3>
+        
       </div>
 <?php
       }
@@ -89,180 +95,9 @@ $user_id = $_SESSION['user_id'];
    }
    ?>
 
-      <section class="show-reviews">
-
-
-      <div class="box-container">
-
-         <div class="box">
-            <img src="images/pic-1.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Peter Mc Gregor </h3>
-         </div>
-
-         <div class="box">
-            <img src="images/pic-2.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Sarah Jones</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/pic-3.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Jonny Dean </h3>
-         </div>
-
-         <div class="box">
-            <img src="images/pic-4.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Julia Anderson</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/pic-5.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Eric Harwards</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/pic-6.png" alt="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ad, quo labore fugiat nam accusamus quia. Ducimus repudiandae dolore placeat.</p>
-            <div class="stars">
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star"></i>
-               <i class="fas fa-star-half-alt"></i>
-            </div>
-            <h3>Nina Sommer</h3>
-         </div>
-
-      </div>
-
-   </section>
-
+      
+</section>
    
-
-   
-
-
-   <section class="authors">
-
-      <h1 class="title">Create Authors</h1>
-
-      <div class="box-container">
-
-         <div class="box">
-            <img src="images/author-1.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>Richard Gate</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/author-2.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>Sarah Jones</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/author-3.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>Thomas Müller</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/author-4.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>Antonia Miller</h3>
-         </div>
-
-         <div class="box">
-            <img src="images/author-5.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>John Dow </h3>
-         </div>
-
-         <div class="box">
-            <img src="images/author-6.jpg" alt="">
-            <div class="share">
-               <a href="#" class="fab fa-facebook-f"></a>
-               <a href="#" class="fab fa-twitter"></a>
-               <a href="#" class="fab fa-instagram"></a>
-               <a href="#" class="fab fa-linkedin"></a>
-            </div>
-            <h3>Andrea Mc Kartney</h3>
-         </div>
-
-      </div>
-
-   </section>
-
-
-
-
-
-
-
    <?php include 'footer.php'; ?>
 
    <!-- custom js file link  -->

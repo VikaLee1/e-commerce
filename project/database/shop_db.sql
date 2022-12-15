@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 14, 2022 at 10:15 AM
+-- Generation Time: Dec 15, 2022 at 10:13 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`id`, `user_id`, `name`, `price`, `quantity`, `image`) VALUES
 (69, 1, 'book', 30, 1, 'mamba.jpg'),
 (70, 10, 'fasdf', 34, 1, 'Screenshot (5).png'),
-(71, 13, 'book', 34, 1, 'mamba.jpg');
+(74, 7, 'AVR', 489, 1, 'ARV.jpg');
 
 -- --------------------------------------------------------
 
@@ -79,6 +79,14 @@ CREATE TABLE `orders` (
   `placed_on` varchar(50) NOT NULL,
   `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`) VALUES
+(13, 17, 'Serri', '123456', 'serri@mail.com', 'cash on delivery', 'flat no. 11, asddfg, Vienna, Austria - 1234', ', AVR (1) , SW Ply (1) ', 1039, '14-Dec-2022', 'pending'),
+(14, 13, 'nikola', '123456', 'user10@mail.com', 'cash on delivery', 'flat no. 12, 123, Vienna, Austria - 1234', ', Salomon  (1) ', 185, '14-Dec-2022', 'pending');
 
 -- --------------------------------------------------------
 
@@ -136,6 +144,15 @@ CREATE TABLE `reviews` (
   `fk_product_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `review`, `fk_user_id`, `fk_product_id`) VALUES
+(1, 'Great service', 17, 13),
+(3, 'pls work', 17, 13),
+(4, 'Thanks for the quick service', 13, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -162,13 +179,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `lname`, `email`, `password`, `image`, `user_type`, `ban`, `ban_start`, `ban_end`) VALUES
 (1, 'misa', 'miskovic', 'misa@gmail.com', 'a646e457db47ad218d6d9d3ce325878b', 'mamba.jpg', 'user', 'yes', '2022-12-14', '2022-12-15'),
 (5, 'Rocky', 'docky', 'admin@mail.com', '202cb962ac59075b964b07152d234b70', NULL, 'admin', NULL, '0000-00-00', '0000-00-00'),
-(6, 'user2', 'User2', 'user2@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'admin', 'no', '2022-12-13', '0000-00-00'),
+(6, 'user2', 'User2', 'user2@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'admin', 'no', NULL, NULL),
 (7, 'user3', 'User3', 'user@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', 'no', NULL, NULL),
 (8, 'user4', 'User4', 'user4@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', 'yes', '2022-12-13', '2022-12-14'),
 (10, 'misa', 'miskovic', 'misa@gmail.com', 'e517097802ff7ba0bbbfefb1bc13c3a9', 'mamba.jpg', 'user', NULL, NULL, NULL),
 (13, 'nikola5', 'sijan1', 'nikola@gmail.com', 'a646e457db47ad218d6d9d3ce325878b', 'ARV.jpg', 'user', NULL, NULL, NULL),
 (16, 'lea', 'sijan', 'lea@gmail.com', 'd9b9768a129ccf45eba4ad5762f24da4', '', 'admin', NULL, NULL, NULL),
-(17, 'serri', 'trainer', 'serri@mail.com', 'e10adc3949ba59abbe56e057f20f883e', NULL, 'user', NULL, NULL, NULL);
+(17, 'serri', 'trainer', 'serri@mail.com', 'e10adc3949ba59abbe56e057f20f883e', 'download.png', 'user', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -205,6 +222,7 @@ ALTER TABLE `products`
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_user_id` (`fk_user_id`),
   ADD KEY `fk_product_id` (`fk_product_id`);
 
@@ -222,7 +240,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -234,13 +252,19 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
