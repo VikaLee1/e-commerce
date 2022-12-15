@@ -155,7 +155,7 @@ if(isset($_POST['update_product'])){
 
 </section>
 
-<section class="edit-product-form" style="">
+<section class="edit-product-form">
 
    <?php
       if(isset($_GET['update'])){

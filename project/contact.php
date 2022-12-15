@@ -44,6 +44,11 @@ if(isset($_POST['send'])){
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
 
+   <style>
+      #map {
+         height: 90%;
+      }
+   </style>
 </head>
 <body>
    
@@ -64,14 +69,12 @@ if(isset($_POST['send'])){
       <textarea name="message" class="box" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
       <input type="submit" value="send message" name="send" class="btn">
    </form>
-   <iframe style="width: 60rem; margin-right:10rem"
-          
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15076.89592087332!2d72.8319697277345!3d19.14167056419224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b63aceef0c69%3A0x2aa80cf2287dfa3b!2sJogeshwari%20West%2C%20Mumbai%2C%20Maharashtra%20400047!5e0!3m2!1sen!2sin!4v1636210664473!5m2!1sen!2sin"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
+   <iframe style="width: 60rem;height: 60rem; margin-right:10rem" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2659.529616851004!2d16.35715031565109!3d48.19641387922816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d078670bd1a79%3A0xfff3e774d955069c!2sKettenbr%C3%BCckengasse%2025%2C%201050%20Wien!5e0!3m2!1sen!2sat!4v1671029445402!5m2!1sen!2sat" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
 </section>
 
+    
+    
 
 
 
