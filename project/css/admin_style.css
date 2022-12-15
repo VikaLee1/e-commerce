@@ -349,7 +349,7 @@ section{
    min-height: 100vh;
    background-color: rgba(0,0,0,.7);
    display: flex;
-   align-items: center;
+   
    justify-content: center;
    padding:2rem;
    overflow-y: scroll;
@@ -357,6 +357,8 @@ section{
    top:0; left:0; 
    z-index: 1200;
    width: 100%;
+   
+   
 }
 
 .edit-product-form form{
@@ -366,11 +368,12 @@ section{
    border-radius: .5rem;
    background-color: var(--white);
    height: 300px;
+   top: 0;
 }
 
 .edit-product-form form img{
    height: 25rem;
-   margin-bottom: 1rem;
+   margin-bottom: 4rem;
 }
 
 .edit-product-form form .box{
